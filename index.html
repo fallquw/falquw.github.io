@@ -2,108 +2,166 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Ремонт квартир під ключ</title>
+    <title>Ремонт балконів у Львові</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #ffffff;
+            background: #f1f5f9;
+            color: #0f172a;
         }
 
         header {
-            padding: 70px 20px;
+            padding: 90px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background: linear-gradient(
+                rgba(15,23,42,0.65),
+                rgba(15,23,42,0.65)
+            ),
+            url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
         }
 
         header h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-size: 44px;
+            margin-bottom: 15px;
         }
 
         header p {
-            font-size: 18px;
-            opacity: 0.9;
+            font-size: 19px;
+            max-width: 750px;
+            margin: auto;
+            opacity: 0.95;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
+            margin-top: 30px;
+            padding: 16px 36px;
             background: #22c55e;
             color: #000;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         section {
-            padding: 60px 20px;
-            max-width: 900px;
+            padding: 80px 20px;
+            max-width: 1100px;
             margin: auto;
         }
 
         section h2 {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
+            font-size: 32px;
         }
 
-        .features {
+        .features, .services, .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
-        .card {
-            background: #020617;
-            padding: 25px;
-            border-radius: 12px;
+        .card, .service {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            background: #020617;
-            opacity: 0.7;
+            padding: 35px;
+            background: #0f172a;
+            color: #fff;
+            opacity: 0.85;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Ремонт квартир під ключ</h1>
-    <p>Швидкий старт · Чіткі терміни · Гарантія якості</p>
-    <a href="#contact" class="btn">Отримати консультацію</a>
+    <h1>Ремонт балконів у Львові</h1>
+    <p>
+        Професійний ремонт балконів під ключ — акуратно, швидко та з гарантією.
+        Працюємо по Львову та області.
+    </p>
+    <a href="#contact" class="btn">Безкоштовна консультація</a>
 </header>
 
 <section>
-    <h2>Чому обирають нас</h2>
+    <h2>Чому нас обирають</h2>
     <div class="features">
         <div class="card">
             <h3>Досвід</h3>
-            <p>Працюємо з квартирами та приватними об’єктами</p>
+            <p>Ремонтуємо балкони будь-якої складності — від косметичного до повного оновлення.</p>
         </div>
         <div class="card">
-            <h3>Терміни</h3>
-            <p>Починаємо роботи протягом 24 годин</p>
+            <h3>Швидкий старт</h3>
+            <p>Починаємо роботи протягом 24 годин після узгодження.</p>
         </div>
         <div class="card">
             <h3>Гарантія</h3>
-            <p>Гарантія на всі виконані роботи</p>
+            <p>Гарантія на всі виконані роботи та використані матеріали.</p>
         </div>
     </div>
 </section>
 
+<section>
+    <h2>Наші послуги</h2>
+    <div class="services">
+        <div class="service">
+            <h3>Ремонт балконів під ключ</h3>
+            <p>Повний комплекс робіт: демонтаж, утеплення, оздоблення.</p>
+        </div>
+        <div class="service">
+            <h3>Утеплення балконів</h3>
+            <p>Комфорт і тепло навіть взимку.</p>
+        </div>
+        <div class="service">
+            <h3>Внутрішнє оздоблення</h3>
+            <p>Панелі, плитка, фарбування — чисто та акуратно.</p>
+        </div>
+        <div class="service">
+            <h3>Підлога на балконі</h3>
+            <p>Ламінат, плитка, вирівнювання основи.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Приклади наших робіт</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" alt="Балкон після ремонту">
+        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c" alt="Оздоблення балкона">
+        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b" alt="Утеплений балкон">
+    </div>
+</section>
+
 <section id="contact">
-    <h2>Контакти</h2>
-    <p>Залиште заявку — ми зв’яжемося з вами найближчим часом</p>
-    <p><strong>Телефон / Telegram</strong></p>
+    <h2>Замовити ремонт балкона</h2>
+    <p style="text-align:center; max-width:750px; margin:auto;">
+        Залиште заявку — ми проконсультуємо вас та зорієнтуємо по вартості робіт.
+    </p>
+    <p style="text-align:center; margin-top:25px;">
+        <strong>Телефон / Telegram</strong>
+    </p>
 </section>
 
 <footer>
-    © 2026 Усі права захищені
+    © 2026 Ремонт балконів у Львові · Усі права захищені
 </footer>
 
 </body>
