@@ -1,284 +1,303 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <title>Ремонт балконів у Львові</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Ремонт балконів у Львові</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg: #f8fafc;
-            --text: #0f172a;
-            --card: #ffffff;
-            --accent: #22c55e;
-            --dark: #0f172a;
-        }
+<style>
+:root{
+--bg:#f8fafc;
+--text:#0f172a;
+--card:#ffffff;
+--accent:#16a34a;
+--dark:#020617;
+}
+body.dark{
+--bg:#020617;
+--text:#f8fafc;
+--card:#0f172a;
+}
 
-        body.dark {
-            --bg: #020617;
-            --text: #f8fafc;
-            --card: #0f172a;
-        }
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:.3s;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+/* MENU */
+.menu-btn{
+position:fixed;
+top:20px;left:20px;
+background:var(--accent);
+color:#fff;
+padding:12px 16px;
+border-radius:14px;
+font-size:20px;
+cursor:pointer;
+z-index:1002;
+font-weight:800;
+}
 
-        body {
-            margin: 0;
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: 0.3s;
-        }
+.sidebar{
+position:fixed;
+top:0;left:-300px;
+width:300px;height:100%;
+background:var(--dark);
+color:#fff;
+padding:30px 20px;
+transition:.3s;
+z-index:1001;
+}
+.sidebar.active{left:0}
+.sidebar h2{margin:50px 0 25px}
+.sidebar a{
+display:block;
+padding:14px;
+margin-bottom:10px;
+background:#0f172a;
+border-radius:12px;
+text-decoration:none;
+color:#fff;
+font-weight:600;
+}
+.theme-btn{
+margin-top:20px;
+background:var(--accent);
+padding:14px;
+border-radius:12px;
+text-align:center;
+cursor:pointer;
+font-weight:700;
+color:#000;
+}
+.overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,.45);
+opacity:0;pointer-events:none;
+transition:.3s;z-index:1000;
+}
+.overlay.active{opacity:1;pointer-events:auto}
 
-        /* MENU BUTTON */
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 26px;
-            cursor: pointer;
-            z-index: 1002;
-        }
+/* HERO */
+header{
+padding:140px 20px;
+text-align:center;
+background:
+linear-gradient(rgba(15,23,42,.8),rgba(15,23,42,.8)),
+url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
+background-size:cover;
+color:#fff;
+}
+header h1{font-size:52px;margin-bottom:20px}
+header p{max-width:900px;margin:auto;font-size:20px}
 
-        /* SIDEBAR */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -280px;
-            width: 280px;
-            height: 100%;
-            background: var(--dark);
-            color: #fff;
-            padding: 30px 20px;
-            transition: 0.3s;
-            z-index: 1001;
-        }
+/* BUTTONS */
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:18px 42px;
+background:var(--accent);
+color:#000;
+border-radius:16px;
+font-weight:800;
+text-decoration:none;
+}
 
-        .sidebar.active {
-            left: 0;
-        }
+/* SECTIONS */
+section{padding:90px 20px;max-width:1300px;margin:auto}
+h2{text-align:center;font-size:38px;margin-bottom:60px}
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 22px;
-            cursor: pointer;
-        }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+.card{
+background:var(--card);
+border-radius:22px;
+padding:30px;
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
 
-        .sidebar h2 {
-            margin-top: 50px;
-            margin-bottom: 30px;
-            font-size: 22px;
-        }
+/* CATALOG */
+.tabs{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-bottom:50px;
+}
+.tab{
+padding:14px 26px;
+border-radius:14px;
+background:#e5e7eb;
+cursor:pointer;
+font-weight:700;
+}
+.tab.active{background:var(--accent);color:#000}
 
-        .sidebar a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 0;
-            font-size: 16px;
-            opacity: 0.9;
-        }
+.catalog{display:none}
+.catalog.active{display:block}
 
-        .sidebar a:hover {
-            opacity: 1;
-        }
+.product img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:15px;
+}
+.price{
+font-size:22px;
+font-weight:800;
+margin:10px 0;
+color:var(--accent);
+}
+.badge{
+display:inline-block;
+padding:6px 12px;
+background:#dcfce7;
+border-radius:10px;
+font-size:13px;
+margin-bottom:10px;
+}
 
-        .theme-btn {
-            margin-top: 30px;
-            padding: 14px;
-            background: var(--accent);
-            color: #000;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        /* OVERLAY */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.45);
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s;
-            z-index: 1000;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* HERO */
-        header {
-            padding: 130px 20px;
-            text-align: center;
-            background:
-                linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.75)),
-                url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c");
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-        }
-
-        header h1 {
-            font-size: 46px;
-            margin-bottom: 20px;
-        }
-
-        header p {
-            max-width: 750px;
-            margin: auto;
-            font-size: 18px;
-        }
-
-        section {
-            padding: 90px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 34px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        .numbers {
-            border-radius: 30px;
-            background:
-                linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)),
-                url("https://images.unsplash.com/photo-1600585154526-990dced4db0d");
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-        }
-
-        .number {
-            text-align: center;
-        }
-
-        .number .value {
-            font-size: 56px;
-            color: var(--accent);
-            font-weight: 800;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #020617;
-            color: #fff;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 34px;
-            }
-        }
-    </style>
+/* FOOTER */
+footer{
+background:#020617;
+color:#fff;
+text-align:center;
+padding:40px;
+}
+</style>
 </head>
 <body>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
 <div class="sidebar" id="sidebar">
-    <div class="close-btn" onclick="toggleMenu()">✕</div>
-    <h2>Меню</h2>
-    <a href="#">🏠 Головна</a>
-    <a href="#">📂 Каталог</a>
-    <a href="#">🛒 Корзина</a>
-    <a href="#">👤 Акаунт</a>
-    <div class="theme-btn" onclick="toggleTheme()">🎨 Змінити тему</div>
+<h2>Меню</h2>
+<a href="#catalog">📂 Каталог</a>
+<a href="#">🛒 Корзина</a>
+<a href="#">👤 Акаунт</a>
+<div class="theme-btn" onclick="toggleTheme()">🎨 Змінити тему</div>
 </div>
 
 <header>
-    <h1>Ремонт балконів під ключ у Львові</h1>
-    <p>
-        Утеплення, оздоблення та реконструкція балконів.
-        Працюємо швидко, акуратно та з гарантією.
-    </p>
+<h1>Ремонт балконів у Львові</h1>
+<p>
+Утеплення, оздоблення, готові балкони під ключ.
+Чіткі матеріали, фіксовані ціни, гарантія до 10 років.
+</p>
+<a href="#catalog" class="btn">Переглянути каталог</a>
 </header>
 
-<section>
-    <h2>Наші послуги</h2>
-    <div class="grid">
-        <div class="card">Ремонт балконів під ключ</div>
-        <div class="card">Утеплення балконів</div>
-        <div class="card">Внутрішнє оздоблення</div>
-        <div class="card">Підлога та вирівнювання</div>
-    </div>
-</section>
+<section id="catalog">
+<h2>Каталог</h2>
 
-<section class="numbers">
-    <h2>Про нас у цифрах</h2>
-    <div class="grid">
-        <div class="number">
-            <div class="value">7+</div>
-            <p>років досвіду</p>
-        </div>
-        <div class="number">
-            <div class="value">300+</div>
-            <p>реалізованих балконів</p>
-        </div>
-        <div class="number">
-            <div class="value">100%</div>
-            <p>задоволених клієнтів</p>
-        </div>
-    </div>
-</section>
+<div class="tabs">
+<div class="tab active" onclick="showCatalog('materials')">Матеріали</div>
+<div class="tab" onclick="showCatalog('balconies')">Готові балкони</div>
+</div>
 
-<section>
-    <h2>Приклади робіт</h2>
-    <div class="grid gallery">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
-        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c">
-        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d">
-    </div>
+<!-- MATERIALS -->
+<div class="catalog active" id="materials">
+<div class="grid">
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
+<div class="badge">Гарантія 10 років</div>
+<h3>ПВХ панелі Premium</h3>
+<p>Вологостійкі, не жовтіють, легко миються.</p>
+<div class="price">1 200 грн / м²</div>
+</div>
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab">
+<div class="badge">Гарантія 8 років</div>
+<h3>Ламінат утеплений</h3>
+<p>Для балконів, з вологостійким шаром.</p>
+<div class="price">1 450 грн / м²</div>
+</div>
+
+<div class="card product"><img src="https://images.unsplash.com/photo-1592928302636-4c84a3d47f27"><div class="badge">10 років</div><h3>Піноплекс 50 мм</h3><p>Ефективне утеплення.</p><div class="price">620 грн / м²</div></div>
+<div class="card product"><img src="https://images.unsplash.com/photo-1588854337118-1f0f6c8a47de"><div class="badge">7 років</div><h3>OSB плита</h3><p>Основа під оздоблення.</p><div class="price">520 грн / м²</div></div>
+<div class="card product"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c"><div class="badge">8 років</div><h3>ПВХ підвіконня</h3><p>Міцні та стійкі.</p><div class="price">900 грн / м.п.</div></div>
+
+</div>
+</div>
+
+<!-- BALCONIES -->
+<div class="catalog" id="balconies">
+<div class="grid">
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115">
+<div class="badge">Під ключ</div>
+<h3>Балкон “Комфорт”</h3>
+<p>Утеплення + панелі + ламінат.</p>
+<div class="price">від 28 000 грн</div>
+</div>
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da">
+<div class="badge">ТОП</div>
+<h3>Балкон “Преміум”</h3>
+<p>Максимальне утеплення + дизайн.</p>
+<div class="price">від 39 000 грн</div>
+</div>
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12">
+<div class="badge">Хіт</div>
+<h3>Балкон “Теплий”</h3>
+<p>Для зими, без втрат тепла.</p>
+<div class="price">від 33 000 грн</div>
+</div>
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d">
+<div class="badge">Економ</div>
+<h3>Балкон “Старт”</h3>
+<p>Базове утеплення.</p>
+<div class="price">від 22 000 грн</div>
+</div>
+
+<div class="card product">
+<img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b">
+<div class="badge">Індивідуально</div>
+<h3>Балкон “Індивід”</h3>
+<p>Проєкт під клієнта.</p>
+<div class="price">ціна договірна</div>
+</div>
+
+</div>
+</div>
+
 </section>
 
 <footer>
-    © 2026 Ремонт балконів у Львові · Усі права захищені
+© 2026 Ремонт балконів у Львові · Гарантія · Фіксовані ціни
 </footer>
 
 <script>
-function toggleMenu() {
-    document.getElementById('sidebar').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
+function toggleMenu(){
+sidebar.classList.toggle('active');
+overlay.classList.toggle('active');
 }
-
-function toggleTheme() {
-    document.body.classList.toggle('dark');
+function toggleTheme(){
+document.body.classList.toggle('dark');
+}
+function showCatalog(id){
+document.querySelectorAll('.catalog').forEach(c=>c.classList.remove('active'));
+document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+event.target.classList.add('active');
 }
 </script>
 
